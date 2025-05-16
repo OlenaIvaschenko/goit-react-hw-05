@@ -1,22 +1,26 @@
-import css from "./MovieList.module.css"
+import css from "./MovieList.module.css";
 import { Link } from "react-router-dom";
 
-const MovieList = ({films}) => {
+const MovieList = ({ films }) => {
+
+console.log(films);
 
 
-  return <ul>
-    {films.map((film)=>{
-        return (
-            <li key ={film.id}>
+  return (
+    <ul>
+      {films &&
+        films.length > 0 &&
+        films.map((film) => {
+          return (
+            <li key={film.id}>
               <Link className={css.link} to={`/movies/${film.id}`}>
-              {film.title}
+                {film.title}
               </Link>
-              </li>
-            
-        )
-    })}
-  </ul>;
+            </li>
+          );
+        })}
+    </ul>
+  );
 };
 
 export default MovieList;
-

@@ -17,7 +17,7 @@ const Navigation = ()=>{
           Home
         </NavLink>
         <NavLink to="/movies" className={buildLinkClass}>
-          About
+          Movies
         </NavLink>
        
         
