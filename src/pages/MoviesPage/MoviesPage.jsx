@@ -8,8 +8,11 @@ import { changeSearchQuery } from "../../utils";
 const MoviesPage = () => {
   const [query, setQuery] = useState("");
   const [searchFilms, setSearchFilms] = useState([]);
+  
   const [searchParams, setSearchParams] = useSearchParams();
-  console.log(searchParams);
+  console.log(searchParams.get("query"));
+  // const query = searchParams.get("query") ?? "";
+
   
 
   useEffect(() => {
@@ -56,8 +59,6 @@ const MoviesPage = () => {
     // setSearchParams(nextSearchParams);
 
     setSearchParams(changeSearchQuery(inputQuery,searchParams));
-
-
 
 
 

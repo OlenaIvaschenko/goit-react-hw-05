@@ -4,6 +4,7 @@
 .nav {
     display: flex;
     gap: 16px;
-    
+    width: 80vw;
+    border-bottom: 1px solid black;
     
 }

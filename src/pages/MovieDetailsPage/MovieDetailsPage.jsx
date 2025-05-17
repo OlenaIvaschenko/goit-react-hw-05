@@ -1,13 +1,18 @@
 import axios from "axios";
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Outlet, useParams, NavLink } from "react-router-dom";
+import css from "./MovieDetailsPage.module.css"
+
 
 const MovieDetailsPage= ()=>{
 
-    const a=useParams();
-    console.log(a);
-    
-    
+  const [film, setFilm] = useState(null);
+
+
+
+    // const {movieID}=useParams();
+    // console.log(movieID);
+  
 
     const id = useParams().movieId
     console.log(id);
@@ -27,7 +32,7 @@ useEffect(() => {
         }
       );
       console.log(film.data);
-    //   setFilms(films.data.results);
+      setFilm(film.data);
     }
      catch (error) {
         console.error("Error fetching films:", error);
@@ -41,6 +46,41 @@ useEffect(() => {
 
 
 
-    return <p> Movie details page</p>
+    return (
+    <div className={css.details}>
+      <button >Go back</button>
+      {film &&(
+        <div className={css.pictureFilm}>
+      <img src={`https://image.tmdb.org/t/p/w185${film.poster_path}`} alt={`film.tagline`} />
+
+      <div>
+      <h2>{film.original_title}</h2>
+      <p>User score</p>
+      <h3>Overview</h3>
+      <p>{film.overview}</p>
+      <h3>Genres</h3>
+      <p>{film.genres.map(genre => genre.name).join(', ')}</p>
+      
+      
+
+      </div>
+      
+      </div>)}
+      
+      <div className={css.navInfo}>
+        <p>Additional information</p>
+      <ul>
+        <li>
+          <NavLink to="cast">Cast</NavLink>
+        </li>
+        <li>
+          <NavLink to="reviews">Reviews</NavLink>
+        </li>
+      </ul>
+
+      <Outlet />
+      </div>
+    </div>
+    )
 };
 export default MovieDetailsPage;
