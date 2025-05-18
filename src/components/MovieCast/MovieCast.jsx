@@ -8,6 +8,9 @@ const MovieCast = () => {
 
   const [cast, setCast] = useState([]);
 
+  const defaultImg =
+    "https://dl-media.viber.com/10/share/2/long/vibes/icon/image/0x0/95e0/5688fdffb84ff8bed4240bcf3ec5ac81ce591d9fa9558a3a968c630eaba195e0.jpg";
+
   useEffect(() => {
     async function fetchCast() {
       try {
@@ -22,6 +25,8 @@ const MovieCast = () => {
           }
         );
 
+        // console.log(cast.data.cast);
+
         setCast(cast.data.cast);
       } catch (error) {
         console.error("Error:", error);
@@ -35,13 +40,16 @@ const MovieCast = () => {
     <ul className={css.cast}>
       {cast.map((actor) => (
         <li key={actor.cast_id}>
-          {actor.profile_path && (
-            <img
-              src={`https://image.tmdb.org/t/p/w185${actor.profile_path}`}
-              alt={actor.name}
-              width="100"
-            />
-          )}
+          <img
+            src={
+              actor.profile_path
+                ? `https://image.tmdb.org/t/p/w185/${actor.profile_path}`
+                : defaultImg
+            }
+            alt={actor.name}
+            width="100"
+          />
+
           <p>
             <strong>{actor.name}</strong>
           </p>
