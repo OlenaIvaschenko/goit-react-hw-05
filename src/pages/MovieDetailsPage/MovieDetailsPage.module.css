@@ -1,18 +1,34 @@
 .pictureFilm {
-    display: flex;
-    padding: 6px;
-    border-bottom: 1px solid black;
-    width: 80vw;
+  display: flex;
+  padding-bottom: 16px;
+  border-bottom: 1px solid black;
+  width: 80vw;
 }
 
-.navInfo{
-    border-bottom: 1px solid black;
-    padding-bottom: 6px;
+.navInfo {
+  border-bottom: 1px solid black;
+  padding-bottom: 6px;
+  width: 80vw;
 }
 
-.details{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+.details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
 
+.goBackLink {
+  margin-bottom: 16px;
+  margin-top: 16px;
+}
+
+.infoDiv {
+  padding-left: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.aboutFilm {
+  text-align: left;
 }
